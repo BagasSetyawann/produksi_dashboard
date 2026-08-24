@@ -1,8 +1,19 @@
 import React from 'react';
 import { formatIDR } from '../utils/format';
 
-const SummaryCards = ({ totalHonor, totalKegiatan, status }) => {
-  const isAman = status.toUpperCase() === 'AMAN';
+const SummaryCards = ({ totalHonor, totalKegiatan }) => {
+  const LIMIT = 3108000;
+  const diff = totalHonor - LIMIT;
+  const isAman = diff <= 0;
+
+  let statusText = '';
+  if (diff > 0) {
+    statusText = `KELEBIHAN ${formatIDR(diff)}`;
+  } else if (diff < 0) {
+    statusText = `KURANG ${formatIDR(Math.abs(diff))}`;
+  } else {
+    statusText = `PAS (Rp 0)`;
+  }
 
   return (
     <div className="summary-grid">
@@ -12,14 +23,14 @@ const SummaryCards = ({ totalHonor, totalKegiatan, status }) => {
           {formatIDR(totalHonor)}
         </div>
       </div>
-      
+
       <div className="card">
         <h3 className="card-title">Total Kegiatan</h3>
         <div className="card-value">{totalKegiatan}</div>
       </div>
-      
+
       <div className="card" style={{ borderLeft: `4px solid ${isAman ? 'var(--success)' : 'var(--danger)'}` }}>
-        <h3 className="card-title">Status Kontrak</h3>
+        <h3 className="card-title">Status Kontrak (3.100.000)</h3>
         <div style={{ marginTop: 'auto', paddingTop: '0.5rem' }}>
           <span className={`badge ${isAman ? 'success' : 'danger'}`}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
@@ -32,7 +43,7 @@ const SummaryCards = ({ totalHonor, totalKegiatan, status }) => {
                 </>
               )}
             </svg>
-            {status.toUpperCase()}
+            {statusText}
           </span>
         </div>
       </div>

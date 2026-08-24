@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { fetchSheetData } from './utils/sheets';
 import SummaryCards from './components/SummaryCards';
 import ActivityTable from './components/ActivityTable';
-import EarningsChart from './components/EarningsChart';
 import { RefreshCw, Search } from 'lucide-react';
 import './index.css';
 
@@ -147,12 +146,10 @@ function App() {
               <SummaryCards
                 totalHonor={selectedPetugas.totalHonor}
                 totalKegiatan={selectedPetugas.activities.length}
-                status={selectedPetugas.status}
               />
 
-              <div className="content-grid">
+              <div className="content-grid" style={{ gridTemplateColumns: '1fr' }}>
                 <ActivityTable activities={selectedPetugas.activities} />
-                <EarningsChart activities={selectedPetugas.activities} />
               </div>
             </>
           ) : (
