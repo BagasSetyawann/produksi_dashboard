@@ -6,7 +6,7 @@ import EarningsChart from './components/EarningsChart';
 import { RefreshCw, Search } from 'lucide-react';
 import './index.css';
 
-const MONTHS = ['JANUARI 2026', 'FEBRUARI 2026'];
+const MONTHS = ['JANUARI 2026', 'FEBRUARI 2026', 'MARET 2026', 'APRIL 2026', 'MEI 2026', 'JUNI 2026', 'JULI 2026', 'AGUSTUS 2026', 'SEPTEMBER 2026', 'OKTOBER 2026', 'NOVEMBER 2026', 'DESEMBER 2026'];
 
 function App() {
   const [selectedMonth, setSelectedMonth] = useState(MONTHS[0]);
@@ -20,7 +20,7 @@ function App() {
     try {
       const parsedData = await fetchSheetData(month);
       setData(parsedData);
-      
+
       if (selectedPetugas) {
         const stillExists = parsedData.find(p => p.nama === selectedPetugas.nama);
         if (stillExists) {
@@ -47,7 +47,7 @@ function App() {
     loadData(selectedMonth);
   };
 
-  const filteredPetugas = data.filter(p => 
+  const filteredPetugas = data.filter(p =>
     p.nama.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -57,22 +57,22 @@ function App() {
       <header className="header">
         <h1>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            <path d="M21 3L13 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M21 8V3H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <path d="M21 3L13 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M21 8V3H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           Dashboard Produksi
         </h1>
-        
+
         <div className="header-controls">
-          <select 
+          <select
             className="select-modern"
             value={selectedMonth}
             onChange={(e) => setSelectedMonth(e.target.value)}
           >
             {MONTHS.map(m => <option key={m} value={m}>{m}</option>)}
           </select>
-          
+
           <button className="btn-refresh" onClick={handleRefresh} disabled={loading} title="Refresh Data">
             <RefreshCw size={16} className={loading ? "spinner-icon" : ""} />
             <span className="text">{loading ? 'Memuat...' : 'Refresh'}</span>
@@ -87,22 +87,22 @@ function App() {
           <div className="sidebar-search">
             <div className="search-input-wrapper">
               <Search size={18} className="search-icon" />
-              <input 
-                type="text" 
-                placeholder="Cari Petugas..." 
+              <input
+                type="text"
+                placeholder="Cari Petugas..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
           </div>
-          
+
           <div className="petugas-list">
             {loading ? (
               <div style={{ padding: '1rem', textAlign: 'center', color: 'var(--text-muted)' }}>Memuat...</div>
             ) : filteredPetugas.length > 0 ? (
               filteredPetugas.map((petugas, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`petugas-item ${selectedPetugas?.nama === petugas.nama ? 'active' : ''}`}
                   onClick={() => {
                     setSelectedPetugas(petugas);
@@ -117,7 +117,7 @@ function App() {
                     <p>{petugas.activities.length} Kegiatan</p>
                   </div>
                   {/* Subtle arrow to indicate selection */}
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{opacity: selectedPetugas?.nama === petugas.nama ? 1 : 0}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: selectedPetugas?.nama === petugas.nama ? 1 : 0 }}>
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
                 </div>
@@ -144,7 +144,7 @@ function App() {
                 <p>Rincian performa dan honorarium bulan {selectedMonth}</p>
               </div>
 
-              <SummaryCards 
+              <SummaryCards
                 totalHonor={selectedPetugas.totalHonor}
                 totalKegiatan={selectedPetugas.activities.length}
                 status={selectedPetugas.status}
