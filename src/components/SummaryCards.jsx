@@ -8,9 +8,9 @@ const SummaryCards = ({ totalHonor, totalKegiatan }) => {
 
   let statusText = '';
   if (diff > 0) {
-    statusText = `KELEBIHAN ${formatIDR(diff)}`;
+    statusText = `Kelebihan ${formatIDR(diff)}`;
   } else if (diff < 0) {
-    statusText = `KURANG ${formatIDR(Math.abs(diff))}`;
+    statusText = `Terpakai ${formatIDR(Math.abs(diff))}`;
   } else {
     statusText = `PAS (Rp 0)`;
   }
@@ -30,7 +30,7 @@ const SummaryCards = ({ totalHonor, totalKegiatan }) => {
       </div>
 
       <div className="card" style={{ borderLeft: `4px solid ${isAman ? 'var(--success)' : 'var(--danger)'}` }}>
-        <h3 className="card-title">Status Kontrak (3.108.000)</h3>
+        <h3 className="card-title">Batas Honorarium per Bulan (3.108.000)</h3>
         <div style={{ marginTop: 'auto', paddingTop: '0.5rem' }}>
           <span className={`badge ${isAman ? 'success' : 'danger'}`}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
