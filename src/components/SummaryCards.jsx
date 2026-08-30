@@ -10,7 +10,7 @@ const SummaryCards = ({ totalHonor, totalKegiatan }) => {
   if (diff > 0) {
     statusText = `Kelebihan ${formatIDR(diff)}`;
   } else if (diff < 0) {
-    statusText = `Terpakai ${formatIDR(Math.abs(diff))}`;
+    statusText = `Sisa yang dapat dipakai tim lain ${formatIDR(Math.abs(diff))}`;
   } else {
     statusText = `PAS (Rp 0)`;
   }
