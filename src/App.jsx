@@ -11,11 +11,13 @@ function App() {
   const [selectedMonth, setSelectedMonth] = useState(MONTHS[0]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedPetugas, setSelectedPetugas] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
   const loadData = async (month) => {
     setLoading(true);
+    setError(null);
     try {
       const parsedData = await fetchSheetData(month);
       setData(parsedData);
@@ -30,9 +32,11 @@ function App() {
       } else {
         setSelectedPetugas(parsedData.length > 0 ? parsedData[0] : null);
       }
-    } catch (error) {
-      console.error("Error loading data:", error);
-      alert(error.message);
+    } catch (err) {
+      console.error("Error loading data:", err);
+      setData([]);
+      setSelectedPetugas(null);
+      setError(err?.message || 'Gagal mengambil data dari Google Sheets.');
     } finally {
       setLoading(false);
     }
@@ -123,7 +127,7 @@ function App() {
               ))
             ) : (
               <div style={{ padding: '1rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-                Petugas tidak ditemukan.
+                {error ? 'Data belum tersedia.' : 'Petugas tidak ditemukan.'}
               </div>
             )}
           </div>
@@ -135,6 +139,11 @@ function App() {
             <div className="loading-screen">
               <div className="spinner"></div>
               <p>Sedang Mengambil Data...</p>
+            </div>
+          ) : error ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', height: '100%', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', textAlign: 'center', padding: '2rem' }}>
+              <h3 style={{ color: 'var(--text-main)' }}>Data Belum Tersedia</h3>
+              <p>{error}</p>
             </div>
           ) : selectedPetugas ? (
             <>
