@@ -123,7 +123,7 @@ export const GOOGLE_SHEET_URLS = {
   'JULI 2026': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_IPhNskFG-j5LVvtgiwNsuAmSPZaO9T500rjqajkghYWCBgaI3raXPd0o122Jq1xn4iFm0CXOOY1O/pub?gid=761766670&single=true&output=csv',
   'AGUSTUS 2026': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_IPhNskFG-j5LVvtgiwNsuAmSPZaO9T500rjqajkghYWCBgaI3raXPd0o122Jq1xn4iFm0CXOOY1O/pub?gid=1441140252&single=true&output=csv',
   'SEPTEMBER 2026': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_IPhNskFG-j5LVvtgiwNsuAmSPZaO9T500rjqajkghYWCBgaI3raXPd0o122Jq1xn4iFm0CXOOY1O/pub?gid=834130802&single=true&output=csv',
-  'OKTOBER 2026': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_IPhNskFG-j5LVvtgiwNsuAmSPZaO9T500rjqajkghYWCBgaI3raXPd0o122Jq1xn4iFm0CXOOY1O/pub?gid=29910910&single=true&output=csv',
+  'OKTOBER 2026': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_IPhNskFG-j5LVvtgiwNsuAmSPZaO9T500rjqajkghYWCBgaI3raXPd0o122Jq1xn4iFm0CXOOY1O/pub?gid=533413725&single=true&output=csv',
   'NOVEMBER 2026': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_IPhNskFG-j5LVvtgiwNsuAmSPZaO9T500rjqajkghYWCBgaI3raXPd0o122Jq1xn4iFm0CXOOY1O/pub?gid=263818052&single=true&output=csv',
   'DESEMBER 2026': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_IPhNskFG-j5LVvtgiwNsuAmSPZaO9T500rjqajkghYWCBgaI3raXPd0o122Jq1xn4iFm0CXOOY1O/pub?gid=1872506315&single=true&output=csv',
 };
